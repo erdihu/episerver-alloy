@@ -1,0 +1,11 @@
+﻿@model CustomBlockModel
+    
+@{
+    var title = Model.CustomObject.CommonSettings.Title;
+}
+
+<fieldset>
+    <legend>CustomBlock data</legend>
+    <p>Episerver property: @Model.SomeText</p>
+    <p>Custom property: @title</p>
+</fieldset>

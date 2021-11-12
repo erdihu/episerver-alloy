@@ -1,0 +1,39 @@
+﻿@using EPiServer.Forms.Helpers.Internal
+@model episerver_alloy.Business.Forms.MultipleFieldFormBlock
+
+@{
+    var formElement = Model.FormElement;
+}
+
+<div class="Form__Element Form__CustomElement FormAddressElement @Model.GetValidationCssClasses()" data-epiforms-element-name="@formElement.ElementName">
+    @Model.RenderDataList()
+
+    <!-- Address detail-->
+    <label for="@formElement.Guid" class="Form__Element__Caption">Address</label>
+    <input name="@formElement.ElementName" id="@formElement.Guid" type="text" class="Form__CustomInput FormAddressElement__Address" value="@Model.Address" @Html.Raw(Model.AttributesString) />
+
+    <!-- Postcode -->
+    <label for="@formElement.Guid" class="Form__Element__Caption">Postcode</label>
+    <input name="@formElement.ElementName" id="@formElement.Guid" type="text" class="Form__CustomInput FormAddressElement__ZipCode" value="@Model.Postcode" @Html.Raw(Model.AttributesString) />
+
+    <!-- City -->
+    <label for="@formElement.Guid" class="Form__Element__Caption">City</label>
+    <input name="@formElement.ElementName" id="@formElement.Guid" type="text" class="Form__CustomInput FormAddressElement__State"
+           value="@Model.City" @Html.Raw(Model.AttributesString) />
+
+    <!-- Country-->
+    <label for="@formElement.Guid" class="Form__Element__Caption">Country</label>
+    <input name="@formElement.ElementName" id="@formElement.Guid" type="text" class="Form__CustomInput FormAddressElement__Country" value="@Model.Country" @Html.Raw(Model.AttributesString) />
+
+
+    @if (!EPiServer.Editor.PageEditing.PageIsInEditMode)
+    {
+        <script type="text/javascript">
+        var __SamplesAddressElements = __SamplesAddressElements || [];
+        __SamplesAddressElements.push({
+            guid: "@formElement.Guid"
+        });
+        </script>
+    }
+
+</div>

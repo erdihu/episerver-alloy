@@ -1,0 +1,13 @@
+@using EPiServer
+@using EPiServer.ServiceLocation
+@using Global = episerver_alloy.Global
+@model PageViewModel<episerver_alloy.Models.Pages.StartPage>
+
+<hr/>
+@{
+    var cr = ServiceLocator.Current.GetInstance<IContentRepository>();
+    var block = cr.Get<CustomBlock>(Model.CurrentPage.CustomBlock);
+    Html.RenderPartial("Blocks/CustomBlock", new CustomBlockModel(block));
+}
+<hr />
+@Html.PropertyFor(x => x.CurrentPage.MainContentArea, new { CssClass = "row equal-height", tag = Global.ContentAreaTags.FullWidth })
